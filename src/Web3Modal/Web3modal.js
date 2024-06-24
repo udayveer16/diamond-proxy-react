@@ -104,12 +104,10 @@ const Web3modal = () => {
     const { address, chainId, isConnected } = useWeb3ModalAccount()
     const [contract,setContract]=useState()
     const { walletProvider } = useWeb3ModalProvider()
-    // console.log("testWeb3",walletProvider,address )
 
     const createProvider=async()=>{
       const ethersProvider = new BrowserProvider(walletProvider)
       const signer = await ethersProvider.getSigner()
-      // The Contract object
       const diamond = new Contract(diamondAddres, abi, signer)
       setContract(diamond)
     }
@@ -124,20 +122,16 @@ const Web3modal = () => {
       if (!isConnected) throw Error('User disconnected')
 
       const counter = await contract.getCounter();
-      console.log("Counter", counter)
       setCount(counter.toString());
     }
 
     function newCounter(e) {
       setNewCount(e.target.value)
-      console.log("NEW COUNTER====", NewCount)
     }
 
     async function setCounter() {
       const trx = await contract.setCounter(NewCount)
-      console.log("Trx+++", trx)
       const result = await trx.wait()
-      console.log("Resulttttt", result)
     }
 
     async function getAdmin() {

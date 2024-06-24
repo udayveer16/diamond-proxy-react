@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { createWeb3Modal, defaultConfig } from "@web3modal/ethers/react";
-import Web3modal from './ConnectButton/Web3modal';
+import Web3modal from './Web3Modal/Web3modal';
 
 
 const BSC = {
@@ -12,7 +12,6 @@ const BSC = {
   rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
 };
 
-// 3. Create modal
 const metadata = {
   name: 'My Website',
   description: 'My Website description',
@@ -22,8 +21,6 @@ const metadata = {
 
 createWeb3Modal({
   includeWalletIds: [
-    // "c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96",
-    // "4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0",
   ],
   ethersConfig: defaultConfig({
     metadata,
